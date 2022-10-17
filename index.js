@@ -63,7 +63,7 @@ app.post("/api/shorturl",function(req,res) {
   // })
 })
 
-app.get("/app/shorturl/:id",(req,res) => {
+app.get("/api/shorturl/:id",(req,res) => {
   const id = req.params.id;
   console.log(req.params.id);
   console.log(Url.findById(id));
