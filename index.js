@@ -33,12 +33,15 @@ app.get('/api/hello', function(req, res) {
 });
 
 app.post("/api/shorturl",function(req,res) {
-  console.log(req.body);
+  console.log(req.body.url, "body");
   const bodyurl = req.body.url;
 
   const something = dns.lookup(urlparser.parse(bodyurl).hostname,
   (error, address )  => {
+    console.log(!address,"True or False");
+    console.log(address)
     if (!address) {
+      console.log("This is working");
       res.json({error: "Invalic URL"})
     }else {
       const url = new Url({url : bodyurl})
@@ -49,10 +52,10 @@ app.post("/api/shorturl",function(req,res) {
         })
       })
     }
-    // console.log("dns",error);
-    // console.log("address", address);
+    console.log("dns",error);
+    console.log("address", address);
   })
-  // console.log("something",something)
+  console.log("something",something)
   // const url = new Url({url: req.body.url})
   // url.save((err,data) => {
   //   res.json({created: true})
